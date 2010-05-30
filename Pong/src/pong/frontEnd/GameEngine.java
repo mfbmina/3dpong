@@ -11,4 +11,11 @@ package pong.frontEnd;
  */
 public class GameEngine {
 
+    public GameEngine() {
+
+    }
+
+    public void run() {
+
+    }
 }
