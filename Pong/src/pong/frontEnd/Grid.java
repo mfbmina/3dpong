@@ -13,7 +13,7 @@ import pong.components.Component;
  *
  * @author eric
  */
-public class Grid {
+public class Grid<Component> {
 
     ArrayList<Component> list = new ArrayList<Component>();
 
@@ -22,7 +22,7 @@ public class Grid {
     }
 
     public void addBall() {
-        list.add(new Ball());
+        list.add((Component) new Ball());
     }
 
 
