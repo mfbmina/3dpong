@@ -36,6 +36,7 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
 
     public void initGame() {
         Grid<Component> grid = new Grid<Component>();
+        for (int i = 0; i < Constants.NUM_BALLS; ++i) grid.addBall();
     }
 
 
