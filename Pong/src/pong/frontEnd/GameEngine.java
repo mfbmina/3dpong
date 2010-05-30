@@ -5,6 +5,8 @@
 
 package pong.frontEnd;
 
+import pong.constants.Constants;
+
 /** Main Game Engine that controls majority of the interactions between classes.
  *
  * @author CJ
@@ -16,6 +18,6 @@ public class GameEngine {
     }
 
     public void run() {
-
+        Thread.sleep(Constants.DELAY);
     }
 }

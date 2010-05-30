@@ -10,10 +10,8 @@ package pong.constants;
  * @author CJ
  */
 public class Constants {
+    public static int DELAY = 10;
 
-    //Uninstanciable
     private Constants(){}
-
-
 
 }

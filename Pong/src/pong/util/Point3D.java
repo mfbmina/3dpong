@@ -16,10 +16,10 @@ public class Point3D {
     public Point3D() {
     }
 
-    public Point3D (int a, int b, int c) {
-        x = a;
-        y = b;
-        z = c;
+    public Point3D (int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public int getX() {

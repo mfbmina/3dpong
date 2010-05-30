@@ -5,10 +5,19 @@
 
 package pong.frontEnd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author eric
  */
-public class Grid {
+public class Grid<E> {
+
+    ArrayList<E> list = new ArrayList<E>();
+
+    public Grid () {
+
+    }
+
 
 }
