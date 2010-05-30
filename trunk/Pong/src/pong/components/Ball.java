@@ -5,6 +5,8 @@
 
 package pong.components;
 
+import pong.util.Direction;
+
 /** A single ball in the game.  Knows about its point and is responsible for
  *  its own image.
  *
@@ -12,4 +14,13 @@ package pong.components;
  */
 public class Ball {
 
+    private Direction direction = new Direction();
+
+    public Ball () {
+
+    }
+
+    public void draw() {
+
+    }
 }
