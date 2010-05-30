@@ -5,13 +5,16 @@
 
 package pong.frontEnd;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import pong.constants.Constants;
 
 /** Main Game Engine that controls majority of the interactions between classes.
  *
  * @author CJ
  */
-public class GameEngine {
+public class GameEngine implements MouseListener, MouseMotionListener {
 
     public GameEngine() {
 
@@ -20,7 +23,42 @@ public class GameEngine {
     public void run() {
         try {
             Thread.sleep(Constants.DELAY);
-        } catch (InterruptedException ex) {
-        }
+            
+        } catch (InterruptedException ex) {}
+    }
+
+
+
+
+
+
+
+    
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
