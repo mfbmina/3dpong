@@ -7,8 +7,8 @@ package pong.components;
 
 import pong.util.*;
 
-/** A single ball in the game.  Knows about its point and is responsible for
- *  its own image.
+/** A single ball in the game.  Knows where it's at and where it's going and is responsible for
+ *  its own image. He's got life figured out.
  *
  * @author CJ
  */
