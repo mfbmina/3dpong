@@ -7,21 +7,22 @@ package pong.frontEnd;
 
 import java.util.ArrayList;
 import pong.components.Ball;
+import pong.components.Component;
 
 /**
  *
  * @author eric
  */
-public class Grid<E> {
+public class Grid {
 
-    ArrayList<E> list = new ArrayList<E>();
+    ArrayList<Component> list = new ArrayList<Component>();
 
     public Grid () {
 
     }
 
     public void addBall() {
-        list.add((E) new Ball());
+        list.add(new Ball());
     }
 
 

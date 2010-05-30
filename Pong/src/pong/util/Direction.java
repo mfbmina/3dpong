@@ -22,7 +22,6 @@ public class Direction {
         this.c = c;
     }
 
-
     public int getMagnitude(){
         //Magnitude = sqrt(a^2 + b^2 + c^2)
         return (int)(Math.sqrt(a * a + b * b + c * c));
