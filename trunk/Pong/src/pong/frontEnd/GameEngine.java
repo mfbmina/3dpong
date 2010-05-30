@@ -18,6 +18,9 @@ public class GameEngine {
     }
 
     public void run() {
-        Thread.sleep(Constants.DELAY);
+        try {
+            Thread.sleep(Constants.DELAY);
+        } catch (InterruptedException ex) {
+        }
     }
 }
