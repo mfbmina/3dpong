@@ -28,14 +28,14 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     }
 
     public void run() {
-        try {
-            Thread.sleep(Constants.DELAY);
-
-        } catch (InterruptedException ex) {}
+        while (true) {
+            
+        try { Thread.sleep(Constants.DELAY); } catch (InterruptedException ex) {}
+        }
     }
 
     public void initGame() {
-
+        Grid<Component> grid = new Grid<Component>();
     }
 
 
