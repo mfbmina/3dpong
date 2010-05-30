@@ -21,6 +21,6 @@ public class Direction {
 
     public int getMagnitude(){
         //Magnitude = sqrt(a^2 + b^2 + c^2)
-        return (int)(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2)));
+        return (int)(Math.sqrt(a * a + b * b + c * c));
     }
 }
