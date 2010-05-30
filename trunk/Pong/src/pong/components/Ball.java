@@ -12,7 +12,7 @@ import pong.util.*;
  *
  * @author CJ
  */
-public class Ball {
+public class Ball extends Component {
 
     private Direction direction = new Direction();
     private Point3D point = new Point3D();

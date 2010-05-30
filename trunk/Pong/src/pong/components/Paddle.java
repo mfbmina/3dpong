@@ -9,7 +9,7 @@ package pong.components;
  *
  * @author eric
  */
-public class Paddle {
+public class Paddle extends Component {
 
     public Paddle() {
 
