@@ -21,9 +21,15 @@ public class Grid<Component> {
 
     }
 
+    Iterable<Component> get() {
+        return list;
+    }
+
     public void addBall() {
         list.add((Component) new Ball());
     }
+
+
 
 
 }
