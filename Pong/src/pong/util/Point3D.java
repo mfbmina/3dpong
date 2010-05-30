@@ -11,9 +11,7 @@ package pong.util;
  */
 public class Point3D {
 
-    private int x;
-    private int y;
-    private int z;
+    private int x, y, z;
 
     public Point3D() {
     }
