@@ -9,6 +9,8 @@ package pong.components;
  *
  * @author CJ
  */
-public class Component {
+public abstract class Component {
 
+    abstract void draw();
+    
 }
