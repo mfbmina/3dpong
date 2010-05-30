@@ -6,6 +6,7 @@
 package pong.frontEnd;
 
 import java.util.ArrayList;
+import pong.components.Ball;
 
 /**
  *
@@ -17,6 +18,10 @@ public class Grid<E> {
 
     public Grid () {
 
+    }
+
+    public void addBall() {
+        list.add((E) new Ball());
     }
 
 
