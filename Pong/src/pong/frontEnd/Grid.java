@@ -5,6 +5,7 @@
 
 package pong.frontEnd;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import pong.components.Ball;
 import pong.components.Component;
@@ -13,7 +14,7 @@ import pong.components.Component;
  *
  * @author eric
  */
-public class Grid<Component> {
+public class Grid {
 
     ArrayList<Component> list = new ArrayList<Component>();
 
@@ -21,13 +22,16 @@ public class Grid<Component> {
 
     }
 
-    Iterable<Component> get() {
-        return list;
+    void paintAll(Graphics g) {
+        for(Component item: list)
+           item.draw(g);
     }
 
     public void addBall() {
         list.add((Component) new Ball());
     }
+
+
 
 
 

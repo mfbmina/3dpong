@@ -5,6 +5,8 @@
 
 package pong.components;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author eric
@@ -15,7 +17,7 @@ public class Paddle extends Component {
 
     }
 
-    public void draw() {
+    public void draw(Graphics g) {
 
     }
 }

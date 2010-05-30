@@ -19,7 +19,7 @@ import pong.components.*;
  */
 public class GameEngine extends JPanel implements MouseListener, MouseMotionListener {
 
-    Grid<Component> grid = new Grid<Component>();
+    Grid grid = new Grid();
 
     public GameEngine() {
 
@@ -42,7 +42,7 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
 
 
     public void PaintComponent(Graphics g) {
-        for (Component comp : grid.get()) {}
+        grid.paintAll(g);
     }
 
 
