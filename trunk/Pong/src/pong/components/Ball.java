@@ -5,6 +5,7 @@
 
 package pong.components;
 
+import java.awt.Graphics;
 import pong.util.*;
 
 /** A single ball in the game.  Knows where it's at and where it's going and is responsible for
@@ -21,7 +22,7 @@ public class Ball extends Component {
 
     }
 
-    public void draw() {
+    public void draw(Graphics g) {
         
     }
 }

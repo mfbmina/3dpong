@@ -5,12 +5,14 @@
 
 package pong.components;
 
+import java.awt.Graphics;
+
 /**Basic Component that everything in the game must extend.
  *
  * @author CJ
  */
 public abstract class Component {
 
-    abstract void draw();
+    public abstract void draw(Graphics g);
     
 }
