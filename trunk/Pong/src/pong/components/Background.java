@@ -22,7 +22,7 @@ public class Background extends Component {
 
     public Background() {
         try {
-       bg = ImageIO.read(new File("src/pong/resources/background.jpg"));
+            bg = ImageIO.read(new File("src/pong/resources/background.jpg"));
         } catch(IOException e) {System.out.println(e.getMessage());}
     }
     
