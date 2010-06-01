@@ -22,9 +22,10 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     protected Grid grid;
 
     public GameEngine() {
-       initGraphics();
+
        initInput();
        initGame();
+       initGraphics();
     }
 
     /**
