@@ -21,7 +21,7 @@ public class Grid {
 
     private static Grid INSTANCE = new Grid();
 
-    ArrayList<Component> list;
+    protected ArrayList<Component> list;
 
     private Grid () {
         this.list = new ArrayList<Component>();
@@ -42,6 +42,21 @@ public class Grid {
     
     public void addBall() {
         list.add((Component) new Ball());
+    }
+
+    /**
+     * Iterate throught list stepping only the balls.
+     */
+    public void stepBalls(){
+        for(Component item: this.list){
+            if(item instanceof Ball)
+                ((Ball)item).step();
+        }
+        checkCollisions();
+    }
+
+    protected void checkCollisions(){
+        //TODO implement bouncing
     }
 
 

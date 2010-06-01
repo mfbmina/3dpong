@@ -15,14 +15,28 @@ import pong.util.*;
  */
 public class Ball extends Component {
 
-    private Direction direction = new Direction();
-    private Point3D point = new Point3D();
+    protected Direction direction;
+    protected Point3D point;
 
     public Ball () {
-
+        this.direction = new Direction();
+        this.point  = new Point3D();
     }
 
     public void draw(Graphics g) {
         
+    }
+
+    /**
+     * Steps this ball by adding the directional vector to the currrent
+     * location.
+     */
+    public void step(){
+        int x = point.getX();
+        int y = point.getY();
+        int z = point.getZ();
+        point = new Point3D(x + this.direction.getA(),
+                y + this.direction.getB(),
+                z + this.direction.getC());
     }
 }

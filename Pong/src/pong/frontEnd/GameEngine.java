@@ -33,6 +33,7 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
      */
     public void run() {
         while (true) {
+            stepBalls();
             repaint();
         try { Thread.sleep(Constants.DELAY); } catch (InterruptedException ex) {}
         }
@@ -57,6 +58,10 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
 
     public void paintComponent(Graphics g) {
         grid.paintAll(g);
+    }
+
+    protected void stepBalls(){
+        grid.stepBalls();
     }
 
 
