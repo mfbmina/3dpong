@@ -5,6 +5,7 @@
 
 package pong.frontEnd;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -37,7 +38,9 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     }
 
     public void initGame() {
-        for (int i = 0; i < Constants.NUM_BALLS; ++i) grid.addBall();
+       setPreferredSize(new Dimension(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
+       grid.setBackground();
+       for (int i = 0; i < Constants.NUM_BALLS; ++i) grid.addBall();
     }
 
 

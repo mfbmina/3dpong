@@ -5,6 +5,9 @@
 
 package pong;
 
+import javax.swing.JFrame;
+import pong.frontEnd.GameEngine;
+
 /**
  *
  * @author CJ
@@ -16,6 +19,16 @@ public class Main {
      */
     public static void main(String[] args) {
 
+    JFrame frame = new JFrame("main");
+    GameEngine engine = new GameEngine();
+    frame.setContentPane(engine);
+
+    frame.pack();
+    frame.setVisible(true);
+    frame.setFocusable(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    engine.run();
     }
 
 }

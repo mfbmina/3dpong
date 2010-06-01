@@ -7,6 +7,7 @@ package pong.frontEnd;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import pong.components.Background;
 import pong.components.Ball;
 import pong.components.Component;
 
@@ -27,6 +28,10 @@ public class Grid {
            item.draw(g);
     }
 
+    public void setBackground() {
+        list.add((Component) new Background());
+    }
+    
     public void addBall() {
         list.add((Component) new Ball());
     }
