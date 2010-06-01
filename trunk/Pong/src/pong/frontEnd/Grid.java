@@ -11,19 +11,27 @@ import pong.components.Background;
 import pong.components.Ball;
 import pong.components.Component;
 
-/**
+/** Singleton Grid Class.
  *
  * @author eric
  */
 public class Grid {
 
-    ArrayList<Component> list = new ArrayList<Component>();
+    //Ya.. i made it a singleton for simplicity sake
 
-    public Grid () {
+    private static Grid INSTANCE = new Grid();
 
+    ArrayList<Component> list;
+
+    private Grid () {
+        this.list = new ArrayList<Component>();
     }
 
-    void paintAll(Graphics g) {
+    public static Grid getInstance(){
+        return Grid.INSTANCE;
+    }
+
+    public void paintAll(Graphics g) {
         for(Component item: list)
            item.draw(g);
     }

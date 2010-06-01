@@ -19,7 +19,7 @@ import pong.constants.Constants;
  */
 public class GameEngine extends JPanel implements MouseListener, MouseMotionListener {
 
-    Grid grid = new Grid();
+    protected Grid grid;
 
     public GameEngine() {
        initGraphics();
@@ -38,6 +38,7 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     }
 
     protected void initGame() {
+        this.grid = Grid.getInstance();
        for (int i = 0; i < Constants.NUM_BALLS; ++i) grid.addBall();
     }
 
