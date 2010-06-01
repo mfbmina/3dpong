@@ -50,13 +50,13 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     }
 
     protected void initGraphics(){
-        grid.setBackground();
         this.setPreferredSize(new Dimension(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
         this.setFocusable(true);
     }
 
 
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         grid.paintAll(g);
     }
 

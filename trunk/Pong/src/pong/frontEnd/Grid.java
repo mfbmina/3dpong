@@ -20,6 +20,7 @@ public class Grid {
     //Ya.. i made it a singleton for simplicity sake
 
     private static Grid INSTANCE = new Grid();
+    private static Background BG = new Background();
 
     protected ArrayList<Component> list;
 
@@ -32,12 +33,9 @@ public class Grid {
     }
 
     public void paintAll(Graphics g) {
+        Grid.BG.draw(g);
         for(Component item: list)
            item.draw(g);
-    }
-
-    public void setBackground() {
-        list.add((Component) new Background());
     }
     
     public void addBall() {
