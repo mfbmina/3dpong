@@ -12,7 +12,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 import pong.constants.Constants;
-import pong.components.*;
 
 /** Main Game Engine that controls majority of the interactions between classes.
  *
@@ -23,13 +22,14 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     Grid grid = new Grid();
 
     public GameEngine() {
-
-       addMouseListener(this);
-       addMouseMotionListener(this);
-
+       initGraphics();
+       initInput();
        initGame();
     }
 
+    /**
+     * Starts the game.  The loop will terminated upon game completion.
+     */
     public void run() {
         while (true) {
             repaint();
@@ -37,10 +37,19 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
         }
     }
 
-    public void initGame() {
-       setPreferredSize(new Dimension(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
-       grid.setBackground();
+    protected void initGame() {
        for (int i = 0; i < Constants.NUM_BALLS; ++i) grid.addBall();
+    }
+
+    protected void initInput(){
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
+    }
+
+    protected void initGraphics(){
+        grid.setBackground();
+        this.setPreferredSize(new Dimension(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
+        this.setFocusable(true);
     }
 
 

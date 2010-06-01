@@ -19,16 +19,19 @@ public class Main {
      */
     public static void main(String[] args) {
 
-    JFrame frame = new JFrame("main");
-    GameEngine engine = new GameEngine();
-    frame.setContentPane(engine);
+        JFrame frame = new JFrame("3D Pong - By Eric + CJ");
 
-    frame.pack();
-    frame.setVisible(true);
-    frame.setFocusable(true);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GameEngine engine = new GameEngine();
 
-    engine.run();
+        frame.setContentPane(engine);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+
+        frame.setFocusable(true);
+        frame.setVisible(true);
+
+        engine.run();
+
     }
 
 }
