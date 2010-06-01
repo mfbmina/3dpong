@@ -39,4 +39,8 @@ public class Ball extends Component {
                 y + this.direction.getB(),
                 z + this.direction.getC());
     }
+
+    public void bounce(){
+        //TODO Implement
+    }
 }
