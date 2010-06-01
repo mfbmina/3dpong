@@ -12,6 +12,8 @@ package pong.constants;
 public class Constants {
     public static int DELAY = 10;
     public static int NUM_BALLS = 1;
+    public static int SCREEN_WIDTH = 400;
+    public static int SCREEN_HEIGHT = 400;
     
     private Constants(){}
 
