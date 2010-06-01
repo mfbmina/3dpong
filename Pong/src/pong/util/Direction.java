@@ -13,9 +13,6 @@ public class Direction {
     
     protected int a, b, c;
 
-    public Direction() {
-    }
-
     public Direction(int a, int b, int c){
         this.a = a;
         this.b = b;
