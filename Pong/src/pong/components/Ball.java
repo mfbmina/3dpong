@@ -11,7 +11,7 @@ import pong.constants.Constants;
 import pong.util.*;
 
 /** A single ball in the game.  Knows where it's at and where it's going and is responsible for
- *  its own image. He's got life figured out.
+ *  its own image. He's got life figured out. - Eric
  *
  * @author CJ
  */
@@ -21,6 +21,7 @@ public class Ball extends Component {
     protected Point3D point;
 
     public Ball () {
+        //Hard Coded Defaults
         this.direction = new Direction(5, 5, 5);
         this.point  = new Point3D(Constants.MAX_BALL_RADIUS,
                 Constants.MAX_BALL_RADIUS,
@@ -42,6 +43,14 @@ public class Ball extends Component {
     }
 
     /**
+     * Returns a copy of the point of the ball.
+     * @return
+     */
+    public Point3D getPoint(){
+        return this.point.clone();
+    }
+
+    /**
      * Steps this ball by adding the directional vector to the currrent
      * location.
      */
@@ -56,5 +65,17 @@ public class Ball extends Component {
 
     public void bounce(int planeID){
         //TODO Implement
+        if(planeID == Constants.PLANE_Z){
+            this.direction = new Direction(this.direction.getA(), this.direction.getB(),
+                    -this.direction.getC());
+        }
+        else if(planeID == Constants.PLANE_X){
+            this.direction = new Direction(-this.direction.getA(), this.direction.getB(),
+                    this.direction.getC());
+        }
+        else if(planeID == Constants.PLANE_Y){
+            this.direction = new Direction(this.direction.getA(), -this.direction.getB(),
+                    this.direction.getC());
+        }
     }
 }
