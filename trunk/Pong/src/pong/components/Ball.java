@@ -19,17 +19,24 @@ public class Ball extends Component {
 
     protected Direction direction;
     protected Point3D point;
+    public static int SIZE = Constants.MAX_BALL_RADIUS;
 
     public Ball () {
         //Hard Coded Defaults
-        this.direction = new Direction(5, 5, 5);
-        this.point  = new Point3D(Constants.MAX_BALL_RADIUS,
-                Constants.MAX_BALL_RADIUS,
-                Constants.MAX_BALL_RADIUS);
+        this.direction = new Direction(20, 0, 20);
+        this.point  = new Point3D(Constants.MAX_BALL_RADIUS + 10,
+                Constants.MAX_BALL_RADIUS + 10,
+                Constants.MAX_BALL_RADIUS + 10);
     }
 
     public void draw(Graphics g) {
-        double scale = (Constants.SCREEN_DEPTH - point.getZ())/((double)Constants.SCREEN_DEPTH);
+        //Scale is not 0-100, should be 100-Constants.MIN_BALL_RADIUS_PER
+        //Old Scale 
+        //double scale = (Constants.SCREEN_DEPTH - point.getZ())/((double)Constants.SCREEN_DEPTH);
+
+        //Scale of Scale is needed
+        double scaleOfScale = (double)point.getZ()/(Constants.SCREEN_DEPTH - Constants.MAX_BALL_RADIUS);
+        double scale = (1 - (1 - Constants.MIN_BALL_RADIUS_PER) * scaleOfScale);
         int finalRadius = (int)(scale * Constants.MAX_BALL_RADIUS);
         int diameter = finalRadius * 2;
         g.setColor(Color.BLACK);
@@ -39,7 +46,45 @@ public class Ball extends Component {
 
     protected Point3D shift3DLook(){
         //TODO HARDEST PART HERE
-        return this.point;
+
+        //Find Middle of Screen
+        int midX = Constants.SCREEN_WIDTH/2;
+        int midY = Constants.SCREEN_HEIGHT/2;
+
+        int tempX = this.point.getX();
+        int tempY = this.point.getY();
+
+        //X shift
+        //Take into account the fact that lowest x value can only be the max radius of the ball
+        double scaleFactorX = (((double)(Constants.SCREEN_WIDTH/2 - Constants.SCREEN_WIDTH_FAR/2 - Constants.MAX_BALL_RADIUS))
+                / (Constants.SCREEN_DEPTH - Constants.MAX_BALL_RADIUS) ) * this.point.getZ();
+        //Deadzone Calc
+        //Yo Cj is stupid again .. don't even use the point xy eh?
+        if(Math.abs(this.point.getX() - midX) < Constants.DEAD_ZONE_X){}
+        else if(this.point.getX() > midX){
+            //Shift to left
+            tempX = Constants.SCREEN_WIDTH - Constants.MAX_BALL_RADIUS - (int)scaleFactorX;
+        }else if(this.point.getX() < midX){
+            //Shift right
+            tempX = Constants.MAX_BALL_RADIUS + (int)scaleFactorX;
+        }
+
+        //Y shift
+        double scaleFactorY = (((double) (Constants.SCREEN_HEIGHT/2 - Constants.SCREEN_HEIGHT_FAR/2 - Constants.MAX_BALL_RADIUS))
+                / (Constants.SCREEN_DEPTH - 2 * Constants.MAX_BALL_RADIUS)) * this.point.getZ();
+        //Deadzone Calc
+        if(Math.abs(this.point.getY() - midY) < Constants.DELAY){}
+        else if(this.point.getY() > midY){
+            //Shift Up
+            tempY = Constants.SCREEN_HEIGHT - Constants.MAX_BALL_RADIUS - (int)scaleFactorY;
+        }else if(this.point.getY() < midY){
+            //Shift Down
+            tempY = Constants.MAX_BALL_RADIUS + (int)scaleFactorY;
+        }
+
+        //Return resulting Point, Z point really doesn't matter
+        return new Point3D(tempX, tempY, this.point.getZ());
+
     }
 
     /**
