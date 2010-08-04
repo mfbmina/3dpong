@@ -23,7 +23,7 @@ public class Ball extends Component {
 
     public Ball () {
         //Hard Coded Defaults
-        this.direction = new Direction(20, 0, 20);
+        this.direction = new Direction(20, 20, 20);
         this.point  = new Point3D(Constants.MAX_BALL_RADIUS + 10,
                 Constants.MAX_BALL_RADIUS + 10,
                 Constants.MAX_BALL_RADIUS + 10);
@@ -58,29 +58,36 @@ public class Ball extends Component {
         //Take into account the fact that lowest x value can only be the max radius of the ball
         double scaleFactorX = (((double)(Constants.SCREEN_WIDTH/2 - Constants.SCREEN_WIDTH_FAR/2 - Constants.MAX_BALL_RADIUS))
                 / (Constants.SCREEN_DEPTH - Constants.MAX_BALL_RADIUS) ) * this.point.getZ();
-        //Deadzone Calc
-        //Yo Cj is stupid again .. don't even use the point xy eh?
-        if(Math.abs(this.point.getX() - midX) < Constants.DEAD_ZONE_X){}
-        else if(this.point.getX() > midX){
-            //Shift to left
-            tempX = Constants.SCREEN_WIDTH - Constants.MAX_BALL_RADIUS - (int)scaleFactorX;
-        }else if(this.point.getX() < midX){
-            //Shift right
-            tempX = Constants.MAX_BALL_RADIUS + (int)scaleFactorX;
-        }
 
+        //X coord Shift
+        //First Step: Find Width at that level
+        double widthLevel = Constants.SCREEN_WIDTH - (((double)(Constants.SCREEN_WIDTH - Constants.SCREEN_WIDTH_FAR))/Constants.SCREEN_DEPTH * this.point.getZ());
+        //Second Step: Find the percentage of the current X over the Total
+        double pointXPercentofWhole = (double)this.point.getX()/Constants.SCREEN_WIDTH;
+        //Third Step: Find the corrected width at that level
+        int widthXCorrect = (int)(widthLevel * pointXPercentofWhole);
+
+//        System.out.println(widthLevel + " " + pointPercentofWhole);
+
+        //Shift right
+            tempX = Constants.MAX_BALL_RADIUS + (int)scaleFactorX //That gives you the right hand side
+                    + widthXCorrect;//That gives you the correct shift
+        
         //Y shift
         double scaleFactorY = (((double) (Constants.SCREEN_HEIGHT/2 - Constants.SCREEN_HEIGHT_FAR/2 - Constants.MAX_BALL_RADIUS))
                 / (Constants.SCREEN_DEPTH - 2 * Constants.MAX_BALL_RADIUS)) * this.point.getZ();
-        //Deadzone Calc
-        if(Math.abs(this.point.getY() - midY) < Constants.DELAY){}
-        else if(this.point.getY() > midY){
-            //Shift Up
-            tempY = Constants.SCREEN_HEIGHT - Constants.MAX_BALL_RADIUS - (int)scaleFactorY;
-        }else if(this.point.getY() < midY){
-            //Shift Down
-            tempY = Constants.MAX_BALL_RADIUS + (int)scaleFactorY;
-        }
+
+        //Y coord Shift
+        //First Step: Find HEIGHT at that level
+        double heightLevel = Constants.SCREEN_HEIGHT - (((double)(Constants.SCREEN_HEIGHT - Constants.SCREEN_HEIGHT_FAR))/Constants.SCREEN_DEPTH * this.point.getZ());
+        //Second Step: Find the percentage of the current Y over the Total
+        double pointYPercentofWhole = (double)this.point.getY()/Constants.SCREEN_HEIGHT;
+        //Third Step: Find the corrected height at that level
+        int heightYCorrect = (int)(heightLevel * pointYPercentofWhole);
+
+        //Shift down
+        tempY = Constants.MAX_BALL_RADIUS + (int) scaleFactorY //that gives you the top side
+                + heightYCorrect; //That gives you the correct shift
 
         //Return resulting Point, Z point really doesn't matter
         return new Point3D(tempX, tempY, this.point.getZ());

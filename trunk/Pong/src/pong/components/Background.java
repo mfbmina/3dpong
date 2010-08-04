@@ -31,8 +31,18 @@ public class Background extends Component {
     public void draw(Graphics g) {
         //g.drawImage(bg, 0, 0, null);
         g.setColor(Color.black);
+        //Temporary Rectangle for coding purposes
         g.drawRect(Constants.SCREEN_WIDTH/2-Constants.SCREEN_WIDTH_FAR/2, Constants.SCREEN_HEIGHT/2 - Constants.SCREEN_HEIGHT_FAR/2,
                 Constants.SCREEN_WIDTH_FAR, Constants.SCREEN_HEIGHT_FAR);
+
+        //Upper Left
+        g.drawLine(0, 0, Constants.SCREEN_WIDTH/2-Constants.SCREEN_WIDTH_FAR/2, Constants.SCREEN_HEIGHT/2 - Constants.SCREEN_HEIGHT_FAR/2);
+        //Upper Right
+        g.drawLine(Constants.SCREEN_WIDTH, 0, Constants.SCREEN_WIDTH/2+Constants.SCREEN_WIDTH_FAR/2, Constants.SCREEN_HEIGHT/2 - Constants.SCREEN_HEIGHT_FAR/2);
+        //Bottom Left
+        g.drawLine(0, Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH/2-Constants.SCREEN_WIDTH_FAR/2,  Constants.SCREEN_HEIGHT/2 + Constants.SCREEN_HEIGHT_FAR/2);
+        //Bottom Right
+        g.drawLine(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH/2+Constants.SCREEN_WIDTH_FAR/2, Constants.SCREEN_HEIGHT/2 + Constants.SCREEN_HEIGHT_FAR/2);
     }
 
 }
