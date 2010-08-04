@@ -28,8 +28,8 @@ public class Constants {
     //3D Constants
     public static int SCREEN_WIDTH_FAR = 100;
     public static int SCREEN_HEIGHT_FAR = 100;
-    public static int DEAD_ZONE_X = SCREEN_WIDTH_FAR/2;
-    public static int DEAD_ZONE_Y = SCREEN_HEIGHT_FAR/2;
+    public static int DEAD_ZONE_X = 12;
+    public static int DEAD_ZONE_Y = 12;
     
     private Constants(){}
 
