@@ -30,6 +30,9 @@ public class Constants {
     public static int SCREEN_HEIGHT_FAR = 100;
     public static int DEAD_ZONE_X = 12;
     public static int DEAD_ZONE_Y = 12;
+
+    //Paddle Constants
+    public static int PADDLE_SIZE = 50;
     
     private Constants(){}
 
