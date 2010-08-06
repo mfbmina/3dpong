@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import pong.components.Background;
 import pong.components.Ball;
 import pong.components.Component;
+import pong.components.Paddle;
 import pong.constants.Constants;
 import pong.util.CollisionDetector;
+import pong.util.Point2D;
 import pong.util.Point3D;
 
 /** Singleton Grid Class.
@@ -39,6 +41,7 @@ public class Grid {
         Grid.BG.draw(g);
         for(Component item: list)
            item.draw(g);
+        Paddle.getInstance().draw(g);
     }
     
     public void addBall() {
@@ -68,12 +71,23 @@ public class Grid {
                 //Check X-Plane 0 - Constants.SCREEN_WIDTH
                 //Check Y-Plane 0 - Constants.SCREEN_HEIGHT
 
+                if(currentPoint.getZ() < 0)
+                    throw new IllegalStateException("Game Over");
+
                 //New Method
                 int ballRadius = Ball.SIZE;
-                if(CollisionDetector.distanceCompare(currentPoint.getZ(), Constants.SCREEN_DEPTH, ballRadius)
-                        || CollisionDetector.distanceCompare(currentPoint.getZ(), 0, ballRadius)){
+                if(CollisionDetector.distanceCompare(currentPoint.getZ(), Constants.SCREEN_DEPTH, ballRadius)){
                     ((Ball) item).bounce(Constants.PLANE_Z);
                     //System.out.println("Heres a collision Z");
+                }else if(CollisionDetector.distanceCompare(currentPoint.getZ(), 0, ballRadius)){
+                    //Need to check if intercepted by paddle
+                    Point2D paddlePoint = Paddle.getInstance().getPoint();
+                    if (CollisionDetector.distanceCompare(currentPoint.getX(), paddlePoint.getX(), Constants.PADDLE_SIZE / 2)
+                         && CollisionDetector.distanceCompare(currentPoint.getY(), paddlePoint.getY(), Constants.PADDLE_SIZE / 2)) {
+                        ((Ball) item).bounce(Constants.PLANE_Z);
+                        System.out.println("Paddle Bounce");
+                    }
+
                 }
                 if(CollisionDetector.distanceCompare(currentPoint.getY(), Constants.SCREEN_HEIGHT, ballRadius)
                         || CollisionDetector.distanceCompare(currentPoint.getY(), 0, ballRadius)){
@@ -85,23 +99,6 @@ public class Grid {
                     ((Ball) item).bounce(Constants.PLANE_X);
                     //System.out.println("Heres a collision X");
                 }
-
-                //Old method below
-                /*if(currentPoint.getZ() < 0 ||
-                        currentPoint.getZ() > Constants.SCREEN_DEPTH ) {
-                    ((Ball)item).bounce(Constants.PLANE_Z);
-                    //System.out.println("Heres a collision Z");
-                }
-                if (currentPoint.getX() < 0 ||
-                        currentPoint.getX() > Constants.SCREEN_WIDTH){
-                    ((Ball) item).bounce(Constants.PLANE_X);
-                    //System.out.println("Heres a collision X");
-                }
-                if(currentPoint.getY() < 0 ||
-                        currentPoint.getY() > Constants.SCREEN_HEIGHT){
-                    ((Ball) item).bounce(Constants.PLANE_Y);
-                    //System.out.println("Heres a collision Y");
-                }*/
             }
         }
     }

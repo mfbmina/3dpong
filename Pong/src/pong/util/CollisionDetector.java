@@ -21,6 +21,7 @@ public class CollisionDetector {
      */
     public static boolean distanceCompare(int point, int wall, int minDistance){
         if(point < 0 || wall < 0){
+            System.out.println("Point : " + point + " | Wall: " + wall);
             throw new IllegalArgumentException("In distanceCompare: point/wall is neg.");
         }
         if(Math.abs(point - wall) < minDistance){

@@ -8,16 +8,17 @@ package pong.frontEnd;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
+import pong.components.Paddle;
 import pong.constants.Constants;
+import pong.util.Point2D;
 
 /** Main Game Engine that controls majority of the interactions between classes.
  *
  * @author CJ
  */
-public class GameEngine extends JPanel implements MouseListener, MouseMotionListener {
+public class GameEngine extends JPanel implements MouseMotionListener {
 
     protected Grid grid;
 
@@ -45,7 +46,6 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
     }
 
     protected void initInput(){
-        this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
 
@@ -64,39 +64,20 @@ public class GameEngine extends JPanel implements MouseListener, MouseMotionList
         grid.stepBalls();
     }
 
-
-
-
-
-/*
- * Mouse Methods implemented from MouseListener and MouseMotionListener
- */
-    
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Point2D point = new Point2D((int)e.getPoint().getX(), (int)e.getPoint().getY());
+        Paddle.getInstance().setPoint(point);
     }
 }

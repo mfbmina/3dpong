@@ -23,7 +23,7 @@ public class Ball extends Component {
 
     public Ball () {
         //Hard Coded Defaults
-        this.direction = new Direction(20, 20, 20);
+        this.direction = new Direction(30, 30, 30);
         this.point  = new Point3D(Constants.MAX_BALL_RADIUS + 10,
                 Constants.MAX_BALL_RADIUS + 10,
                 Constants.MAX_BALL_RADIUS + 10);
